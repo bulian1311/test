@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+      integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link href="./styles.css" rel="stylesheet" />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.32/vue.global.prod.min.js"
+      integrity="sha512-pbspgJVYNmqpOYhM/wa/Mf+TEuaeSxt0PQiEDspPbojn8l8z2DH/3sEaV+227hFXCAXGEgMJhod61y0Cw64yVg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="app" class="container">
+      <div class="card-back card-back-first"></div>
+      <div class="card-back card-back-second"></div>
+      <div class="card">
+        <div class="card-header">
+          <h1 class="headline">Todo list</h1>
+          <button class="btn">ADD</button>
+        </div>
+
+        <div class="card-body">
+          <div class="list">
+            <div v-for="todo in todos" :key="todo.id" class="list-item">
+              <label class="todo-container">
+                <input
+                  class="todo-checkbox"
+                  type="checkbox"
+                  v-model="todo.completed"
+                />
+                <span class="checkmark"></span>
+                <div>
+                  <span
+                    class="todo-headline"
+                    :class="{'todo-completed': todo.completed}"
+                  >
+                    {{todo.title}}
+                  </span>
+                  <p v-if="todo.isDescription" class="todo-description">
+                    {{todo.title}}
+                  </p>
+                </div>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="copyright">&copy; {{getDate()}} Nikolay Kachanov</div>
+    </div>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
